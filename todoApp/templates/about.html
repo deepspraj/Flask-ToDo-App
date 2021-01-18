@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+
+
+<div class="jumbotron">
+{% if current_user.is_authenticated %}
+<h1>Welcome,  {{current_user.username}}..!! </h1>
+{% else %}
+<h1>Welcome, Guest..!! </h1>
+{% endif %}
+
+<br>
+<p>The web application was created for hobby purpose.</p>
+<br>
+
+
+<p>This is version 2.0 of web application.</p>
+Update in v2.0:
+<ol>
+    <li>Registration of User.</li>
+    <li>Login for User.</li>
+    <li>User should be registered to use the web app optimaly.</li>
+</ol>
+
+<p><em>Note : The registered account password's are hashed before saving to database.</em> Passwords are unknown.</p>
+<p>If you have any issue related to the web application. Please do <a href="mailto:deepprajapati01@gmail.com">mail</a> me.</p>
+<p>The web app was created by Deepak Prajapati.</p>
+    
+
+
+</div>
+{% endblock %}

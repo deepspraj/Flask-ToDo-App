@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+<div class="jumbotron">
+{% if total %}
+    {% for count in everyTask %}
+        <br>
+        <p>Task Name : {{count.task}}.</p>
+        <p>Task Date : {{count.date}}</p>
+        <p>Created by : {{count.user.username}}</p>
+        <p>Date and Time of Creation : {{count.dateOfCreation}}</p>  
+        
+        {% set user1 = count.user.username  %}
+        {% set user2 = current_user.username  %}
+        
+        {% if (user2 == admin) or (user1 == user2) %}
+            <p>For changes click <a href="{{url_for('task.separate', tag=count.id)}}">here</a>.</p>
+        {% endif %}
+        <br>
+        <hr>
+    {% endfor %}
+{% else %}
+<h1>No users have registered their task.</h1>
+{% endif %}
+
+</div>
+{% endblock %}

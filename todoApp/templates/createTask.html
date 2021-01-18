@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{% block content %}    
+
+
+
+<div class="sidenav">
+    <div class="login-main-text">
+       <h2>Create<br> Your task here.</h2>
+       
+    </div>
+ </div>
+ <div class="main">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+          <form method="POST">
+            {{form.hidden_tag()}}<br>
+             <div class="form-group">
+                {{form.taskname.label}}
+                {{form.taskname(type="text", class="form-control", placeholder="Taskname")}}
+             </div>
+             <div class="form-group">
+                {{form.dateOfTask.label}}
+                {{form.dateOfTask(type="test", class="form-control", placeholder="Date (MM/DD/YYYY)")}}
+             </div>
+             {{form.submit(type="submit",class="btn btn-black")}}
+          </form>
+       </div>
+    </div>
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
