@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+    
+    
+    
+    <div class="sidenav">
+        <div class="login-main-text">
+           <h2>Application<br>OTP verification Page</h2>
+           <p><a href="{{url_for('users.loginUser')}}">Login</a> or <a href="{{url_for('users.registerUser')}}">Register</a> from here to access.</p>
+        </div>
+     </div>
+     <div class="main">
+        <div class="col-md-6 col-sm-12">
+           <div class="login-form">
+              <form method="POST">
+                {{otpForm.hidden_tag()}}<br>
+                 <div class="form-group">
+                    {{otpForm.otpData.label}}
+                    {{otpForm.otpData(type="password", class="form-control", placeholder="OTP")}}
+                 </div>
+                 
+                 {{otpForm.submit(type="submit",class="btn btn-gray")}}
+                 
+              </form>
+              <br>
+               <br>
+            <p>Once submitted email id, otp may take few seconds to get delivered.</p>
+                
+           </div>
+           <br>
+           <br>
+        </div>
+    
+     </div>
+    
+
+
+{% endblock %}

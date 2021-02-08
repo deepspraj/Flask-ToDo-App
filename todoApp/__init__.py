@@ -3,6 +3,7 @@ from flask import Flask, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from itsdangerous import URLSafeTimedSerializer
 
 app = Flask(__name__)
 
@@ -15,6 +16,7 @@ baseDirectory = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(baseDirectory, 'todobase.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+forgotPass = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
 db = SQLAlchemy(app)
 
@@ -33,10 +35,10 @@ login_manager.init_app(app)
 login_manager.login_view = "users.loginUser"
 
 
-from .tasks.views import task
-from .users.views import users
-from .error.errorHandlers import errorPages
-from .core.views import core
+from todoApp.tasks.views import task
+from todoApp.users.views import users
+from todoApp.error.errorHandlers import errorPages
+from todoApp.core.views import core
 
 app.register_blueprint(core)
 app.register_blueprint(errorPages)

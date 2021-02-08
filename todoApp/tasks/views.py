@@ -8,7 +8,7 @@ from datetime import date
 task = Blueprint('task', __name__)
 
 
-
+#All Task List
 @task.route('/allTask')
 def allTask():
 
@@ -17,10 +17,11 @@ def allTask():
     user1 = ''
     user2 = ''
     total = len(everyTask)
+    
     return render_template('allTask.html', everyTask=everyTask, user1=user1, user2=user2, total=total, admin=admin)
     
 
-
+#More Detailed Particular Task
 @task.route('/separate')
 @login_required
 def separate():
@@ -31,6 +32,8 @@ def separate():
 
     return render_template('separateTask.html', separateTask=separateTask)
 
+
+#Delete Your Task
 @task.route('/delete')
 @login_required
 def delete():
@@ -42,6 +45,8 @@ def delete():
 
     return redirect('allTask')
 
+
+#Create New Task
 @task.route('/createTask', methods=['GET', 'POST'])
 @login_required
 def newTask():

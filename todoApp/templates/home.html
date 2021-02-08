@@ -2,8 +2,26 @@
 
 {% block content %}
 
-<div class="jumbotron">
-<h1 class="display-4">Welcome, {% if current_user.is_authenticated %}{{current_user.username}}..!!{% else %}Guest..!!{% endif %}</h1>
-<p class="lead">This is a Simple todo task web application.</p>
-</div>
+
+
+
+
+<div class="about">
+    <div class="inner-about">
+        <h1 class="display-4">Hi, {% if current_user.is_authenticated %}{{current_user.username}}..!!{% else %}Guest..!!{% endif %}</h1>
+        <br><br><h3>Nice to see you!</h3>
+      <p>I'm a student that writes code, creates bugs and sometimes frustrate for all the messed-up things.</p>
+      {% if current_user.is_authenticated %}
+      <p><a href="{{url_for('task.newTask')}}">Create</a> or <a href="{{url_for('task.allTask')}}">List</a> the tasks here.</p>
+      {% else %}
+      <p><a href="{{url_for('users.loginUser')}}">Login</a> or <a href="{{url_for('users.registerUser')}}">Register</a> here to access the web-app for free.</p>
+      {% endif %}
+      <p class="social">
+        <a href="https://github.com/deepspraj">
+          <i class="fab fa-github icon-18 mr-3"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+  
 {% endblock %}

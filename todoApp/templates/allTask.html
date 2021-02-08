@@ -2,27 +2,51 @@
 
 {% block content %}
 
-<div class="jumbotron">
+
+    
 {% if total %}
+<br>
+<div class="container">
+    <main class="grid">
+        
     {% for count in everyTask %}
-        <br>
-        <p>Task Name : {{count.task}}.</p>
-        <p>Task Date : {{count.date}}</p>
-        <p>Created by : {{count.user.username}}</p>
-        <p>Date and Time of Creation : {{count.dateOfCreation}}</p>  
-        
-        {% set user1 = count.user.username  %}
-        {% set user2 = current_user.username  %}
-        
-        {% if (user2 == admin) or (user1 == user2) %}
-            <p>For changes click <a href="{{url_for('task.separate', tag=count.id)}}">here</a>.</p>
-        {% endif %}
-        <br>
-        <hr>
+    <article>
+        <img src="data:image/png;charset=utf-8;base64,{{count.user.profileImage}}" alt="imageofcreator" width="80%">
+        <div class="text">
+          <h4>Task : {{count.task}}</h4>
+          <p class="card-text">Task date : {{count.date}}.</p>
+                    <p class="card-text">Created by : {{count.user.username}}.</p>
+                    <p class="card-text"><small class="text-muted">Date and Time of Creation : {{count.dateOfCreation}}</small></p>
+                    {% set user1 = count.user.username  %}
+                    {% set user2 = current_user.username  %}
+                    {% if (user2 == admin) or (user1 == user2) %}
+                        <p class="card-text"><small class="text-muted">For changes <a href="{{url_for('task.separate', tag=count.id)}}" class="card-link">click</a>.</small></p>
+                    {% endif %}
+        </div>
+      </article>
+            
+    
     {% endfor %}
+
+    
+        </div>
+        <br>
+    <br>
+    </div>
+    
 {% else %}
-<h1>No users have registered their task.</h1>
+<div class="about">
+    <div class="inner-about">
+        <h1 class="display-4">No users have registered their task(s).</h1>
+        <br>
+        <br>
+        {% if current_user.is_authenticated %}
+        <p><a href="{{url_for('task.newTask')}}">Click</a> here to create a task.</p>
+        {% else %}
+        <p><a href="{{url_for('users.loginUser')}}">Click</a> here to login page.</p>
+        {% endif %}
+    </div>
+
 {% endif %}
 
-</div>
 {% endblock %}

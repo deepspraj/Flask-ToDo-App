@@ -1,10 +1,13 @@
 {% extends "base.html"%}
 
 {% block content %}
-<div class="jumbotron">
-    <h1>Sorry {% if current_user.is_authenticated %}{{current_user.username}}..!!{% else %}Guest..!!{% endif %},<br> You landed on wrong page.....</h1>
-    <p><a href="{{url_for('core.home')}}">Click</a> here to traverse back to home page.</p>
+<div class="about">
+    <div class="inner-about">
+        <h1 class="display-4">Sorry {% if current_user.is_authenticated %}{{current_user.username}}..!!{% else %}Guest..!!{% endif %},<br> You landed on wrong page.....</h1>
+        <br>
+        <br>
+        <p><a href="{{url_for('core.home')}}">Click</a> here to traverse back to home page.</p>
+      
+    </div>
 
-
-</div>  
 {% endblock %}

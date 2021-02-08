@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+
+{% block content %}
+<div class="about">
+    <div class="inner-about">
+        <h1 class="display-4">Sorry, the link expired.</h1>
+        <br>
+        <br>
+        <p><a href="{{url_for('users.forgotPassword')}}">Click</a> here to traverse back to reset password.</p>
+      
+    </div>
+
+{% endblock %}

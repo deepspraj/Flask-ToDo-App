@@ -1,14 +1,31 @@
 {% extends "base.html"%}
 
 {% block content %}
+<div class="container">
+  <div class="text-center">
+    <br>
+    <span style="float:right;color:#ffffff"><a href="{{url_for('users.changeDetails')}}"><button type="button" class="btn btn-gray">Update Details</button></a></span>
+    <br>
+    <br>
+    <div id="userProfilePic">
+    <img class="userImage" src="data:image/png;charset=utf-8;base64,{{current_user.profileImage}}" alt="imageofcreator" align="middle" style="width: 20%; height: 20%; border-radius: 50%;">
+    </div>
+    <div class="usernameID">
+    <h1>{{current_user.username}}</h1>
+    {% if current_user.username == 'deepspraj' %}
+      <p class="lead">Admin</p>
+    {% else %}
+      <p class="lead">Normal User</p>
+    {% endif %}
+    </div>
+  </div>
+  <ul class="list-unstyled text-muted userDetails" style="margin-left:3%;">
+    <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{current_user.location}}</li>
+    <li><i class="fas fa-link" aria-hidden="true"></i> <a href="mailto:{{current_user.email}}"> {{current_user.email}}</a></li>
+    <li><i class="far fa-calendar-alt" aria-hidden="true"></i> Joined on {{current_user.joined}}</li>
+  </ul>
+  <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
 
-<div class="jumbotron">
-
-
-<h1>Welcome, {% if current_user.is_authenticated %}{{current_user.username}}..!!{% else %}Guest..!!{% endif %}</h1>
-
-<p>Username : {{current_user.username}}</p>
-<p>Email Id : {{current_user.email}}</p>
 
 </div>
 {% endblock %}
