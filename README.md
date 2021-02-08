@@ -39,3 +39,7 @@ Password's are hashed before saving to database.
 ```
 (terminal) > python app.py
 ```
+
+### Shut Down App:
+
+- Shut down the web app first from terminal or cmd or python-idle.
