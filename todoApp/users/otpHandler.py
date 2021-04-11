@@ -6,8 +6,6 @@ import random
 
 #Class for otp generation and mailling the otp to registered email
 class otpGenerate():
-
-    otp = ""
     
     @classmethod
     def otpGenerater(cls, receiverEmail):
@@ -17,7 +15,7 @@ class otpGenerate():
         server.starttls() 
         
 
-        password='nmobgeeydmbaiurr'  #Your app password provided by gmail 
+        password = '****************'  #Your app password provided by gmail for more details ()
 
 
         msg = MIMEMultipart()
@@ -30,7 +28,6 @@ class otpGenerate():
         #Generate OTP using random.randint() function
         otp = ''.join([str(random.randint(0,9)) for i in range(6)])
 
-        cls.otp = otp
 
         html = """<html>
                     <head>
@@ -76,4 +73,4 @@ class otpGenerate():
 
 
 
-        return cls.otp
+        return otp

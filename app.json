@@ -1,0 +1,7 @@
+{
+    "name": "To-DO Task Web-APP",
+    "description": "Web-APP for to-do task based on user priority",
+    "repository": "https://github.com/deepspraj/flask-todo-app",
+    "logo": "https://i.ibb.co/rZ6bznC/logo.png",
+    "keywords": ["to-do", "web-app", "flask", "to-do task"]
+  }
